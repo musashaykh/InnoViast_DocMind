@@ -60,10 +60,35 @@ Visit: http://localhost:8501
 
 ## 📚 Knowledge Base
 
-Place your documents in the `/data` folder:
-- `data/sample_1.pdf`
-- `data/sample_2.txt`
-- etc.
+Your DocMind AI chatbot can answer questions about:
+
+### Documents Included:
+
+1. **Python_Basics.txt** (4000 words)
+   - Variables and data types
+   - Operators and control flow
+   - Loops and conditionals
+   - String operations
+
+2. **Python_Functions_OOP.txt** (3500 words)
+   - Function definition and parameters
+   - Return values and scope
+   - Classes and objects
+   - Inheritance and polymorphism
+
+3. **Python_FAQs.txt** (3000 words)
+   - 10 common Python errors with solutions
+   - 10 frequently asked questions
+   - Best practices
+
+**Total:** 3 documents, ~10,500 words, Python programming focused
+
+### Sample Questions:
+- "What are Python data types?"
+- "How do I define a function?"
+- "What is a class in Python?"
+- "How do I fix a NameError?"
+- "What's the difference between list and tuple?"
 
 ## 🔄 Project Phases
 

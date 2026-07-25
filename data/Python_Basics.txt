@@ -1,0 +1,234 @@
+================================================================================
+PYTHON PROGRAMMING BASICS - COMPLETE GUIDE
+================================================================================
+
+Chapter 1: Introduction to Python
+================================================================================
+
+What is Python?
+Python is a high-level, interpreted programming language known for its simplicity
+and readability. It was created by Guido van Rossum in 1991 and has become one of
+the most popular programming languages for web development, data science, and AI.
+
+Why Learn Python?
+- Easy to learn and read
+- Versatile (web, data science, AI, automation)
+- Large community and extensive libraries
+- Fast development time
+- Great for beginners and professionals
+
+Python Installation & Setup
+1. Download from https://www.python.org
+2. Run installer and select "Add Python to PATH"
+3. Verify: Open terminal and type: python --version
+4. Install IDE (VS Code, PyCharm, or use online editors)
+
+Chapter 2: Variables and Data Types
+================================================================================
+
+Variables
+A variable is a named container that stores data. In Python, you don't need to
+declare the type; Python figures it out automatically.
+
+Syntax: variable_name = value
+
+Example:
+name = "Ali"
+age = 25
+height = 5.9
+is_student = True
+
+print(name)  # Output: Ali
+print(age)   # Output: 25
+
+Variable Naming Rules
+- Must start with letter or underscore (_)
+- Can contain letters, numbers, and underscores
+- Case-sensitive (age and Age are different)
+- Cannot use reserved keywords (if, for, while, etc.)
+
+Good Examples:
+student_name, age, _private_var, myVar123
+
+Bad Examples:
+123name (starts with number), my-var (hyphen), for (reserved keyword)
+
+Data Types
+Python has several built-in data types:
+
+1. String (str) - Text data
+   text = "Hello, Python!"
+   quote = 'Single or double quotes work'
+   long_text = """Multi-line strings
+   can span multiple
+   lines"""
+
+2. Integer (int) - Whole numbers
+   age = 25
+   year = 2024
+   negative = -10
+
+3. Float (float) - Decimal numbers
+   height = 5.9
+   price = 19.99
+   pi = 3.14159
+
+4. Boolean (bool) - True or False
+   is_active = True
+   is_student = False
+   result = (5 > 3)  # True
+
+5. List (list) - Ordered, mutable collection
+   fruits = ["apple", "banana", "orange"]
+   numbers = [1, 2, 3, 4, 5]
+   mixed = [1, "hello", 3.14, True]
+   
+   Accessing: fruits[0]  # "apple"
+   Adding: fruits.append("mango")
+   Length: len(fruits)  # 4
+
+6. Tuple (tuple) - Ordered, immutable collection
+   colors = ("red", "green", "blue")
+   Accessing: colors[0]  # "red"
+   Cannot modify after creation
+
+7. Dictionary (dict) - Key-value pairs
+   student = {
+       "name": "Ali",
+       "age": 25,
+       "courses": ["Python", "JavaScript"]
+   }
+   
+   Accessing: student["name"]  # "Ali"
+   Adding: student["gpa"] = 3.8
+
+Type Conversion
+Converting between data types:
+
+int("123")          # "123" → 123
+float("3.14")       # "3.14" → 3.14
+str(123)            # 123 → "123"
+bool(1)             # 1 → True
+bool(0)             # 0 → False
+list("abc")         # "abc" → ['a', 'b', 'c']
+
+Chapter 3: Operators
+================================================================================
+
+Arithmetic Operators
++  Addition        10 + 5 = 15
+-  Subtraction     10 - 5 = 5
+*  Multiplication  10 * 5 = 50
+/  Division        10 / 5 = 2.0
+// Floor Division  10 // 3 = 3
+%  Modulus         10 % 3 = 1
+** Exponent        2 ** 3 = 8
+
+Comparison Operators
+==  Equal to       5 == 5  → True
+!=  Not equal to   5 != 3  → True
+>   Greater than   5 > 3   → True
+<   Less than      5 < 3   → False
+>=  Greater/equal  5 >= 5  → True
+<=  Less/equal     5 <= 3  → False
+
+Logical Operators
+and  Both must be True    (True and False) → False
+or   At least one True    (True or False)  → True
+not  Reverses result      not True         → False
+
+Chapter 4: Control Flow
+================================================================================
+
+If Statements
+Make decisions based on conditions:
+
+age = 18
+if age >= 18:
+    print("You are an adult")
+else:
+    print("You are a minor")
+
+If-Else If-Else
+grade = 85
+if grade >= 90:
+    print("A")
+elif grade >= 80:
+    print("B")
+elif grade >= 70:
+    print("C")
+else:
+    print("F")
+
+For Loops
+Iterate over sequences:
+
+# Loop through list
+fruits = ["apple", "banana", "orange"]
+for fruit in fruits:
+    print(fruit)
+
+# Loop with range
+for i in range(5):  # 0, 1, 2, 3, 4
+    print(i)
+
+# Loop with index
+for i in range(len(fruits)):
+    print(f"{i}: {fruits[i]}")
+
+While Loops
+Repeat while condition is true:
+
+count = 0
+while count < 5:
+    print(count)
+    count += 1
+
+Break and Continue
+break - Exit the loop immediately
+continue - Skip current iteration
+
+for i in range(10):
+    if i == 5:
+        break  # Exit loop when i = 5
+    print(i)  # 0, 1, 2, 3, 4
+
+for i in range(5):
+    if i == 2:
+        continue  # Skip when i = 2
+    print(i)  # 0, 1, 3, 4
+
+Chapter 5: String Operations
+================================================================================
+
+String Methods
+text = "Hello, Python!"
+
+.upper()       # "HELLO, PYTHON!"
+.lower()       # "hello, python!"
+.replace()     # text.replace("Python", "World")
+.split()       # ["Hello,", "Python!"]
+.strip()       # Removes whitespace from ends
+.startswith()  # text.startswith("Hello") → True
+.endswith()    # text.endswith("!") → True
+.find()        # Position of substring
+
+String Formatting
+name = "Ali"
+age = 25
+
+# Method 1: Concatenation
+print("My name is " + name + " and I am " + str(age))
+
+# Method 2: % formatting
+print("My name is %s and I am %d" % (name, age))
+
+# Method 3: .format()
+print("My name is {} and I am {}".format(name, age))
+
+# Method 4: f-strings (recommended)
+print(f"My name is {name} and I am {age}")
+
+================================================================================
+END OF PYTHON BASICS GUIDE
+================================================================================

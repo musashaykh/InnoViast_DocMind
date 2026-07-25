@@ -1,0 +1,205 @@
+================================================================================
+PYTHON FUNCTIONS AND OBJECT-ORIENTED PROGRAMMING
+================================================================================
+
+Chapter 1: Functions
+================================================================================
+
+What is a Function?
+A function is a reusable block of code that performs a specific task. It helps
+organize code, avoid repetition, and make programs more modular.
+
+Defining Functions
+Syntax:
+def function_name(parameters):
+    """Docstring explaining what function does"""
+    # Code block
+    return value
+
+Example 1: Simple Function
+def greet():
+    print("Hello, World!")
+
+greet()  # Call the function
+
+Example 2: Function with Parameters
+def greet_person(name):
+    print(f"Hello, {name}!")
+
+greet_person("Ali")  # Output: Hello, Ali!
+
+Example 3: Function with Return Value
+def add(a, b):
+    """Add two numbers and return the result"""
+    return a + b
+
+result = add(5, 3)
+print(result)  # Output: 8
+
+Function Parameters and Arguments
+- Parameters: Variables in function definition
+- Arguments: Values passed when calling function
+
+def introduce(name, age, city):
+    print(f"{name} is {age} years old and lives in {city}")
+
+introduce("Ali", 25, "Lahore")  # Positional arguments
+introduce(age=25, name="Ali", city="Lahore")  # Named arguments
+
+Default Parameters
+def greet(name, greeting="Hello"):
+    print(f"{greeting}, {name}!")
+
+greet("Ali")  # Uses default: Hello, Ali!
+greet("Ali", "Hi")  # Custom greeting: Hi, Ali!
+
+Variable-Length Arguments
+Using *args for multiple positional arguments:
+def sum_numbers(*args):
+    total = 0
+    for num in args:
+        total += num
+    return total
+
+sum_numbers(1, 2, 3, 4, 5)  # Returns 15
+
+Using **kwargs for keyword arguments:
+def print_info(**kwargs):
+    for key, value in kwargs.items():
+        print(f"{key}: {value}")
+
+print_info(name="Ali", age=25, city="Lahore")
+
+Scope
+Local Scope: Variable defined inside function
+Global Scope: Variable defined outside function
+
+x = 10  # Global variable
+
+def my_function():
+    x = 20  # Local variable
+    print(x)  # 20
+
+my_function()
+print(x)  # 10 (global x unchanged)
+
+Lambda Functions
+Anonymous functions defined with lambda keyword:
+
+square = lambda x: x ** 2
+print(square(5))  # 25
+
+# Used with map, filter
+numbers = [1, 2, 3, 4, 5]
+squared = list(map(lambda x: x ** 2, numbers))
+print(squared)  # [1, 4, 9, 16, 25]
+
+Chapter 2: Object-Oriented Programming (OOP)
+================================================================================
+
+What is OOP?
+OOP is a programming paradigm based on objects and classes. It helps structure
+large programs and promote code reuse through inheritance and polymorphism.
+
+Classes and Objects
+A class is a blueprint; an object is an instance of that class.
+
+Defining a Class
+class Student:
+    """A class representing a student"""
+    
+    def __init__(self, name, age, student_id):
+        self.name = name
+        self.age = age
+        self.student_id = student_id
+    
+    def display_info(self):
+        print(f"Name: {self.name}, Age: {self.age}, ID: {self.student_id}")
+    
+    def is_adult(self):
+        return self.age >= 18
+
+Creating Objects
+student1 = Student("Ali", 25, "S001")
+student2 = Student("Sara", 20, "S002")
+
+Calling Methods
+student1.display_info()  # Output: Name: Ali, Age: 25, ID: S001
+student1.is_adult()      # Output: True
+
+The __init__ Method
+Special method called when object is created. Used to initialize attributes.
+
+class Car:
+    def __init__(self, brand, model, year):
+        self.brand = brand
+        self.model = model
+        self.year = year
+
+my_car = Car("Toyota", "Corolla", 2023)
+
+Attributes vs Methods
+Attributes: Data/properties of object
+Methods: Functions/actions object can perform
+
+class Dog:
+    def __init__(self, name, breed):
+        self.name = name          # Attribute
+        self.breed = breed        # Attribute
+    
+    def bark(self):              # Method
+        print(f"{self.name} says: Woof!")
+
+Inheritance
+Child class inherits properties from parent class:
+
+class Animal:
+    def __init__(self, name):
+        self.name = name
+    
+    def speak(self):
+        print(f"{self.name} makes a sound")
+
+class Dog(Animal):
+    def speak(self):
+        print(f"{self.name} barks!")
+
+dog = Dog("Buddy")
+dog.speak()  # Output: Buddy barks!
+
+Polymorphism
+Different classes can have methods with same name but different behavior:
+
+class Cat(Animal):
+    def speak(self):
+        print(f"{self.name} meows!")
+
+class Dog(Animal):
+    def speak(self):
+        print(f"{self.name} barks!")
+
+animals = [Cat("Whiskers"), Dog("Rex")]
+for animal in animals:
+    animal.speak()  # Each responds differently
+
+Encapsulation
+Protecting data by making attributes private (convention with _):
+
+class BankAccount:
+    def __init__(self, balance):
+        self._balance = balance  # Private attribute
+    
+    def get_balance(self):
+        return self._balance
+    
+    def deposit(self, amount):
+        self._balance += amount
+
+account = BankAccount(1000)
+print(account.get_balance())  # 1000
+account.deposit(500)
+print(account.get_balance())  # 1500
+
+================================================================================
+END OF FUNCTIONS AND OOP GUIDE
+================================================================================
