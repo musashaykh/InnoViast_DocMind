@@ -23,7 +23,7 @@ CHUNK_OVERLAP = 150
 EMBEDDING_MODEL = "all-MiniLM-L6-v2"
 LLM_MODEL = "llama-3.1-8b-instant"
 TOP_K = 3
-SIMILARITY_THRESHOLD = 0.5
+SIMILARITY_THRESHOLD = 0.3
 
 RAG_PROMPT = ChatPromptTemplate.from_template("""
 You are DocMind AI, a helpful assistant that answers questions ONLY using the
@@ -73,7 +73,34 @@ def get_llm():
 @st.cache_resource
 def get_vectorstore(_embeddings):
     if not Path(CHROMA_DB_PATH).exists():
-        return None
+        # Auto-build from /data folder on first run (e.g. fresh deployment)
+        if not Path(DATA_FOLDER).exists() or not any(Path(DATA_FOLDER).iterdir()):
+            return None  # No documents to build from either
+
+        with st.spinner("🔧 Building knowledge base for the first time... this may take a minute"):
+            docs = []
+            for file_path in Path(DATA_FOLDER).glob("*.txt"):
+                docs.extend(TextLoader(str(file_path), encoding="utf-8").load())
+            for file_path in Path(DATA_FOLDER).glob("*.pdf"):
+                docs.extend(PyPDFLoader(str(file_path)).load())
+
+            if not docs:
+                return None
+
+            splitter = RecursiveCharacterTextSplitter(
+                chunk_size=CHUNK_SIZE,
+                chunk_overlap=CHUNK_OVERLAP,
+                separators=["\n\n", "\n", ". ", " ", ""]
+            )
+            chunks = splitter.split_documents(docs)
+
+            vectorstore = Chroma.from_documents(
+                documents=chunks,
+                embedding=_embeddings,
+                persist_directory=CHROMA_DB_PATH
+            )
+            return vectorstore
+
     return Chroma(persist_directory=CHROMA_DB_PATH, embedding_function=_embeddings)
 
 # ============================================================================
