@@ -11,10 +11,10 @@ CHROMA_DB_PATH = "chroma_db"
 embeddings = HuggingFaceEmbeddings(model_name=f"sentence-transformers/{EMBEDDING_MODEL}")
 vectorstore = Chroma(persist_directory=CHROMA_DB_PATH, embedding_function=embeddings)
 
-question = "What is a variable in Python?"
+question = "what is python"
 
 print(f"\n🔍 Query: {question}\n")
-results = vectorstore.similarity_search_with_relevance_scores(question, k=3)
+results = vectorstore.similarity_search_with_relevance_scores(question, k=8)
 
 for i, (doc, score) in enumerate(results):
     print(f"--- Result {i+1} ---")

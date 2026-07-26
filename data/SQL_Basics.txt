@@ -1,0 +1,173 @@
+SQL BASICS - COMPLETE GUIDE
+
+Chapter 1: Introduction to SQL
+
+What is SQL?
+SQL (Structured Query Language) is the standard language for managing and
+querying relational databases. It's used to create, read, update, and
+delete data stored in tables.
+
+Popular Database Systems Using SQL
+- MySQL
+- PostgreSQL
+- SQLite
+- Microsoft SQL Server
+- Oracle Database
+
+What is a Relational Database?
+A relational database organizes data into tables (rows and columns), where
+tables can be related to each other through shared keys.
+
+Basic Terminology
+- Table: A collection of related data organized in rows and columns
+- Row (Record): A single entry in a table
+- Column (Field): A specific attribute of the data (e.g., "name", "age")
+- Primary Key: A unique identifier for each row in a table
+- Foreign Key: A column that references the primary key of another table
+
+Chapter 2: Basic Queries (SELECT)
+
+Selecting All Columns
+SELECT * FROM students;
+
+Selecting Specific Columns
+SELECT name, age FROM students;
+
+Filtering with WHERE
+SELECT * FROM students WHERE age > 18;
+
+SELECT * FROM students WHERE city = 'Lahore';
+
+Sorting Results
+SELECT * FROM students ORDER BY age ASC;    -- Ascending
+SELECT * FROM students ORDER BY age DESC;   -- Descending
+
+Limiting Results
+SELECT * FROM students LIMIT 10;
+
+Combining Conditions
+SELECT * FROM students WHERE age > 18 AND city = 'Lahore';
+SELECT * FROM students WHERE age > 18 OR gpa > 3.5;
+
+Chapter 3: Filtering and Pattern Matching
+
+Using LIKE for Pattern Matching
+SELECT * FROM students WHERE name LIKE 'A%';     -- Starts with A
+SELECT * FROM students WHERE name LIKE '%son';   -- Ends with "son"
+SELECT * FROM students WHERE name LIKE '%an%';   -- Contains "an"
+
+Using IN
+SELECT * FROM students WHERE city IN ('Lahore', 'Karachi', 'Islamabad');
+
+Using BETWEEN
+SELECT * FROM students WHERE age BETWEEN 18 AND 25;
+
+Checking for NULL Values
+SELECT * FROM students WHERE email IS NULL;
+SELECT * FROM students WHERE email IS NOT NULL;
+
+Chapter 4: Modifying Data
+
+Inserting Data
+INSERT INTO students (name, age, city)
+VALUES ('Ali', 22, 'Lahore');
+
+Updating Data
+UPDATE students
+SET age = 23
+WHERE name = 'Ali';
+
+Deleting Data
+DELETE FROM students WHERE name = 'Ali';
+
+WARNING: Always use a WHERE clause with UPDATE and DELETE, or you'll
+modify/delete every row in the table.
+
+Chapter 5: Creating and Modifying Tables
+
+Creating a Table
+CREATE TABLE students (
+    id INTEGER PRIMARY KEY,
+    name TEXT NOT NULL,
+    age INTEGER,
+    city TEXT,
+    email TEXT UNIQUE
+);
+
+Common Data Types
+- INTEGER: Whole numbers
+- TEXT / VARCHAR: Text strings
+- REAL / FLOAT: Decimal numbers
+- BOOLEAN: True/False values
+- DATE: Calendar dates
+
+Adding a Column
+ALTER TABLE students ADD COLUMN gpa REAL;
+
+Dropping a Table
+DROP TABLE students;
+WARNING: This permanently deletes the table and all its data.
+
+Chapter 6: Aggregate Functions
+
+COUNT — Counting Rows
+SELECT COUNT(*) FROM students;
+
+SUM — Adding Values
+SELECT SUM(age) FROM students;
+
+AVG — Calculating Average
+SELECT AVG(gpa) FROM students;
+
+MIN and MAX
+SELECT MIN(age) FROM students;
+SELECT MAX(age) FROM students;
+
+Grouping Results
+SELECT city, COUNT(*) FROM students GROUP BY city;
+
+Filtering Groups with HAVING
+SELECT city, COUNT(*) FROM students
+GROUP BY city
+HAVING COUNT(*) > 5;
+
+Chapter 7: Joining Tables
+
+What is a JOIN?
+A JOIN combines rows from two or more tables based on a related column
+between them, typically a foreign key relationship.
+
+INNER JOIN
+Returns only rows that have matching values in both tables.
+
+SELECT students.name, courses.course_name
+FROM students
+INNER JOIN enrollments ON students.id = enrollments.student_id
+INNER JOIN courses ON enrollments.course_id = courses.id;
+
+LEFT JOIN
+Returns all rows from the left table, and matched rows from the right
+table (NULL if no match).
+
+SELECT students.name, enrollments.course_id
+FROM students
+LEFT JOIN enrollments ON students.id = enrollments.student_id;
+
+Chapter 8: Common SQL Errors
+
+Error: Syntax Error Near "..."
+Cause: Missing comma, quote, or semicolon in the query.
+Fix: Carefully check punctuation, especially around string values.
+
+Error: Column Does Not Exist
+Cause: Typo in column name, or column doesn't exist in that table.
+Fix: Verify exact column names using: DESCRIBE table_name; (MySQL) or
+PRAGMA table_info(table_name); (SQLite)
+
+Error: Duplicate Entry / Unique Constraint Violation
+Cause: Trying to insert a value that violates a UNIQUE or PRIMARY KEY
+constraint.
+Fix: Check for existing records before inserting, or use
+INSERT OR IGNORE / ON CONFLICT clauses depending on your database.
+
+END OF SQL BASICS GUIDE

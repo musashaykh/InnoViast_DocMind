@@ -1,9 +1,6 @@
-================================================================================
 PYTHON PROGRAMMING BASICS - COMPLETE GUIDE
-================================================================================
 
 Chapter 1: Introduction to Python
-================================================================================
 
 What is Python?
 Python is a high-level, interpreted programming language known for its simplicity
@@ -24,7 +21,6 @@ Python Installation & Setup
 4. Install IDE (VS Code, PyCharm, or use online editors)
 
 Chapter 2: Variables and Data Types
-================================================================================
 
 Variables
 A variable is a named container that stores data. In Python, you don't need to
@@ -113,7 +109,6 @@ bool(0)             # 0 → False
 list("abc")         # "abc" → ['a', 'b', 'c']
 
 Chapter 3: Operators
-================================================================================
 
 Arithmetic Operators
 +  Addition        10 + 5 = 15
@@ -138,7 +133,6 @@ or   At least one True    (True or False)  → True
 not  Reverses result      not True         → False
 
 Chapter 4: Control Flow
-================================================================================
 
 If Statements
 Make decisions based on conditions:
@@ -199,7 +193,6 @@ for i in range(5):
     print(i)  # 0, 1, 3, 4
 
 Chapter 5: String Operations
-================================================================================
 
 String Methods
 text = "Hello, Python!"
@@ -229,6 +222,4 @@ print("My name is {} and I am {}".format(name, age))
 # Method 4: f-strings (recommended)
 print(f"My name is {name} and I am {age}")
 
-================================================================================
 END OF PYTHON BASICS GUIDE
-================================================================================

@@ -1,9 +1,6 @@
-================================================================================
 PYTHON FREQUENTLY ASKED QUESTIONS & COMMON ERRORS
-================================================================================
 
 Section 1: Common Errors and Solutions
-================================================================================
 
 Error 1: SyntaxError: Invalid Syntax
 Problem: Forgetting colon (:) after if, for, while, def, etc.
@@ -125,7 +122,6 @@ import pandas  # pandas not installed
 import pandas as pd
 
 Section 2: Frequently Asked Questions
-================================================================================
 
 Q1: What's the difference between == and is?
 A: == checks if values are equal, is checks if objects are same in memory.
@@ -211,6 +207,4 @@ with open("data.txt", "r") as file:
     content = file.read()
     # File automatically closed after this block
 
-================================================================================
 END OF PYTHON FAQs
-================================================================================
